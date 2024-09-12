@@ -3,9 +3,6 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const router = express.Router();
 
-const AddToCart = require("./controllers/AddToCart");
-const AddToWishlist = require("./controllers/AddToWishlist");
-
 router.get("/", async (req, res) => {
   try {
     const product = await prisma.product.findMany();
@@ -15,6 +12,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/cart/add", AddToCart);
-router.post("/wishlist/add", AddToWishlist);
 module.exports = router;

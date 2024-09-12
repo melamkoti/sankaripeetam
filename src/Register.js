@@ -12,7 +12,6 @@ const prisma = new PrismaClient();
 
 const JWT_SECRET = process.env.JWT_SECRET || "vlacksolutions";
 
-// signup
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -30,7 +29,7 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-//sign in
+
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -52,7 +51,6 @@ router.post("/signin", async (req, res) => {
   }
 });
 
-// get user details
 router.get("/me", async (req, res) => {
   const authHeader = req.headers.authorization;
 
@@ -69,7 +67,6 @@ router.get("/me", async (req, res) => {
   }
 });
 
-// email transporter configration
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
@@ -80,12 +77,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Generate OTP function
 const generateOTP = () => {
   return crypto.randomBytes(3).toString("hex");
 };
 
-//fotget password
 router.post("/sendotp", async (req, res) => {
   const { email } = req.body;
 
@@ -116,7 +111,6 @@ router.post("/sendotp", async (req, res) => {
   });
 });
 
-// verifyotp
 router.post("/verifyotp", async (req, res) => {
   const { email, otp } = req.body;
   try {
@@ -134,7 +128,6 @@ router.post("/verifyotp", async (req, res) => {
   }
 });
 
-// reset password
 router.post("/resetpassword", async (req, res) => {
   const { email, otp, newpassword, reenterpassword } = req.body;
   try {

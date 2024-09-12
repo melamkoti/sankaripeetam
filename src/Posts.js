@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       orderBy: {
         date: "desc",
       },
-      take: 3, // Assuming you want to limit to recent 3 posts
+      take: 3,
     });
     res.json(posts);
   } catch (error) {
