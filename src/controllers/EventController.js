@@ -14,7 +14,7 @@ const upcomingEvents = async (req, res) => {
         eventDate: "asc",
       },
     });
-    res.json(events); // Respond with the upcoming events
+    res.json(events);
   } catch (error) {
     res.json({ error: "Internal server error" });
   }
@@ -33,7 +33,7 @@ const oldEvents = async (req, res) => {
         eventDate: "desc",
       },
     });
-    res.json(events); // Respond with the old events
+    res.json(events);
   } catch (error) {
     res.json({ error: "Internal server error" });
   }

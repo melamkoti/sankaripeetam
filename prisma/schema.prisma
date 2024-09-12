@@ -8,49 +8,27 @@ datasource db {
     url = env("DATABASE_URL")
 }
 
+
 model User {
-  id         Int      @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
   name       String?
-  email      String   @unique
+  email      String       @unique
   password   String
   otp        String?
   otpExpiry  DateTime?
-  cart       Cart?    @relation(fields: [cartId], references: [id])
-  cartId     Int?     @unique
-  wishlist   Wishlist? @relation(fields: [wishlistId], references: [id])
-  wishlistId Int?     @unique
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
-
-model Cart {
-  id        Int      @id @default(autoincrement())
-  products  CartProduct[]
-  user      User?    @relation
-  userId    Int?     @unique // One-to-one relation with User
-}
-
-model Wishlist {
-  id        Int      @id @default(autoincrement())
-  products  WishlistProduct[]
-  user      User?    @relation
-  userId    Int?     @unique // One-to-one relation with User
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  cartProducts CartProduct[]
 }
 
 model CartProduct {
   id        Int      @id @default(autoincrement())
-  cartId    Int
-  cart      Cart     @relation(fields: [cartId], references: [id])
-  productId Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
   product   Product  @relation(fields: [productId], references: [id])
-}
-
-model WishlistProduct {
-  id          Int      @id @default(autoincrement())
-  wishlistId  Int
-  wishlist    Wishlist @relation(fields: [wishlistId], references: [id])
-  productId   Int
-  product     Product  @relation(fields: [productId], references: [id])
+  productId Int
+  qty       Int
+  createdAt DateTime @default(now())
 }
 
 model Product {
@@ -60,10 +38,11 @@ model Product {
   price         Float
   image         String?
   cartItems     CartProduct[]
-  wishlistItems WishlistProduct[]
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
+ 
+
 
 model Activity {
     id Int @id  @default(autoincrement())
@@ -74,10 +53,6 @@ model Activity {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
-
-
-
-
 model Event {
     id Int @id @default(autoincrement() )
     title String

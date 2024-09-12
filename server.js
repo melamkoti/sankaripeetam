@@ -9,13 +9,13 @@ const Activity = require("./src/Activity");
 const EventsRoutes = require("./src/EventsRoutes");
 const Posts = require("./src/Posts");
 const Contact = require("./src/ContactUs");
-
+const Cart = require("./src/Cart");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {
   origin: ["http://127.0.0.1:5173", "http://localhost:5173"],
-  methods: ["GET", "POST", "UPDATE", "DELETE"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
@@ -31,5 +31,6 @@ app.use("/product", Product);
 app.use("/event", EventsRoutes);
 app.use("/post", Posts);
 app.use("/contact", Contact);
+app.use("/cart", Cart);
 
 app.listen(PORT, () => console.log(`app is running on ${PORT}`));

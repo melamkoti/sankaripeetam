@@ -15,7 +15,6 @@ const khali = "/imagdata/posts/footer-2.jpeg";
 const pooja = "/imagdata/posts/footer-3.jpeg";
 
 async function main() {
-  // Insert Activities
   await prisma.activity.createMany({
     data: [
       {
@@ -28,7 +27,7 @@ async function main() {
       {
         title: "Parihaara Pooja",
         image: pariharapuja,
-        color: "##DB4212",
+        color: "#DB4212",
         description:
           "సకలమూ సరీగ బద్ధిత | కష్టాలు తీరుటలో సమర్థత || అన్యత్రగ సోదర వేదన | మరికొన్ని కృతజ్ఞత పూజలు ||",
       },
@@ -42,39 +41,62 @@ async function main() {
       {
         title: "Adhyatmikam",
         image: pariharapuja,
-        color: "#ffffej",
+        color: "#B38A4B",
         description:
           "కామః  క్రోధశ్చ, లోభశ్చ దేహే తిష్ఠతి తస్కరాః  || జ్ఞాన రత్నాపహారాయ | తస్మాత్ జాగ్రత  జాగ్రత ||",
       },
     ],
   });
 
-  // Insert product
   await prisma.product.createMany({
     data: [
       {
         title: "Hand Bell",
         price: 140.0,
         image: bell,
-        qty: "1",
+        qty: "0",
       },
       {
         title: "Puja Thali",
         price: 120.0,
         image: thali,
-        qty: "1",
+        qty: "0",
       },
       {
         title: "Candle Holder",
         price: 160.0,
         image: candleholder,
-        qty: "1",
+        qty: "0",
       },
       {
         title: "Candle Bundle",
         price: 180.0,
         image: candlebundle,
-        qty: "1",
+        qty: "0",
+      },
+      {
+        title: "Hand Bell",
+        price: 140.0,
+        image: bell,
+        qty: "0",
+      },
+      {
+        title: "Puja Thali",
+        price: 120.0,
+        image: thali,
+        qty: "0",
+      },
+      {
+        title: "Candle Holder",
+        price: 160.0,
+        image: candleholder,
+        qty: "0",
+      },
+      {
+        title: "Candle Bundle",
+        price: 180.0,
+        image: candlebundle,
+        qty: "0",
       },
     ],
   });
@@ -126,13 +148,27 @@ async function main() {
       {
         title: "Sivarathri",
         description: "This event is shivudi puja celebration",
-        image: Janmashtami,
+        image: Durga,
         eventDate: new Date("23-nov-2023"),
+        youtubeLink: "https://youtube.com/watch?v=someVideo",
+      },
+      {
+        title: "Onam",
+        description: "This event is lakshmi puja celebration",
+        image: Janmashtami,
+        eventDate: new Date("23-nov-2024"),
+        youtubeLink: "https://youtube.com/watch?v=someVideo",
+      },
+      {
+        title: "deepavali",
+        description: "This event is lakshi  puja celebration",
+        image: Durga,
+        eventDate: new Date("1-nov-2022"),
         youtubeLink: "https://youtube.com/watch?v=someVideo",
       },
     ],
   });
-  // posts inserted
+
   await prisma.post.createMany({
     data: [
       {
