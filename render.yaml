@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sankaripeetam
+    env: node
+    buildCommand: "node prisma/seed.js"
+    startCommand: "nodemon server.js"
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres:1234@localhost:5432/peetam?schema=public
+    rootDir: sankaripeetam
