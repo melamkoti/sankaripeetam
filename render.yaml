@@ -8,4 +8,4 @@ services:
     envVars:
       - key: DATABASE_URL
         value: postgresql://postgres:1234@localhost:5432/peetam?schema=public
-    rootDir: ./src/sankaripeetam
+    rootDir: sankaripeetam
